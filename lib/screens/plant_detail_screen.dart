@@ -6,7 +6,7 @@ import '../providers/plant_provider.dart';
 class PlantDetailScreen extends StatelessWidget {
   final String plantId;
 
-  const PlantDetailScreen({Key? key, required this.plantId}) : super(key: key);
+  const PlantDetailScreen({required this.plantId, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,27 +19,27 @@ class PlantDetailScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(
               plant.imageUrl,
-              height: 220,
+              height: 200,
               fit: BoxFit.cover,
             ),
             const SizedBox(height: 16),
             Text(
               plant.name,
-              style: Theme.of(context).textTheme.headline6,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Text(
               plant.description,
-              style: Theme.of(context).textTheme.bodyText2,
+              style: const TextStyle(fontSize: 16),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             Text(
-              '\₹
-${plant.price.toStringAsFixed(2)}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              '₹${plant.price.toStringAsFixed(2)}',
+              style: const TextStyle(fontSize: 20, color: Colors.green),
             ),
           ],
         ),
